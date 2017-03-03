@@ -17,7 +17,9 @@
 		</div>	
 	</div>
 	<script>
-	var HTMLskills = '<img src="%data%">';
+	var Firstpage = '<div id="First" style="flex-flow: wrap; display: -moz-box;"><img src="%data%"></div>';
+	var Secondpage = '<div id="Second" style="flex-flow: wrap; display: -moz-box;"><img src="%data%"></div>';
+
 		function testFunction() {
 			var x = document.getElementById('test');
 			if (x.style.display === 'none') {
@@ -26,38 +28,10 @@
 		}
 
 		var bio = {
-			// "name" : "Austin Nazareth",
-			// "role" : "Front-End Web Dev",
-			// "contacts" : {
-			// 	"mobile" : "123-123-1234",
-			// 	"email" : "placeholder@email.com",
-			// 	"github" : "MistaTg",
-			// 	"location" : "Calgary, AB"
-			// },
-			// "welcomeMessage" : "Hello World",
-			"skills" : ["http://tinyurl.com/gw6rw33", "http://tinyurl.com/gs3zngf"],
-			//"biopic" : "images/fry.jpg"
+			"skills" : ["http://tinyurl.com/gw6rw33", "http://tinyurl.com/gs3zngf", "http://tinyurl.com/h3xxgor", "http://tinyurl.com/zmlg7y2"],
 		};
 
 bio.display = function(bio_obj, skills_obj, count_obj) {
-
-	// for (var bios=0,x=1;bios<x;bios++) {
-	// 	var formattedMobile = HTMLmobile.replace("%data%", bio_obj.contacts.mobile);
-	// 	var formattedEmail = HTMLemail.replace("%data%", bio_obj.contacts.email);
-	// 	var formattedGit = HTMLgithub.replace("%data%", bio_obj.contacts.github);
-	// 	var formattedLoc = HTMLlocation.replace("%data%", bio_obj.contacts.location);
-	// 	var formattedName = HTMLheaderName.replace("%data%", bio_obj.name);
-	// 	var formattedRole = HTMLheaderRole.replace("%data%", bio_obj.role);
-	// 	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio_obj.welcomeMessage);
-	// 	var formattedProPic = HTMLbioPic.replace("%data%", bio_obj.biopic);
-	// 	var bioForm = formattedName + formattedRole + formattedWelcomeMsg + formattedProPic;
-	// 	var contactForm = formattedMobile + formattedEmail + formattedLoc + formattedGit;
-
-	// 	$("#header").append(bioForm);
-	// 	$("#topContacts").append(contactForm);
-	// 	$("#footerContacts").append(contactForm);
-	// 	$("#header").append(HTMLskillsStart)
-	// }
 
 	// for (var skill=0,x=count_obj;skill<x;skill++) {
 	// 		var formskills = HTMLskills.replace("%data%", bio_obj.skills[skill]);
@@ -65,10 +39,31 @@ bio.display = function(bio_obj, skills_obj, count_obj) {
 	// 		$("#test").append(formskills);
 	// 	}
 
-	if (count_obj >= 0) {
-		var formskills = HTMLskills.replace("%data%", bio_obj.skills[count_obj]);
-		console.log(count_obj);
-		$("#test").append(formskills);
+	// if (count_obj <= 1) {
+	// 	var formskills = HTMLskills.replace("%data%", bio_obj.skills[count_obj]);
+	// 	console.log(count_obj);
+	// 	$("#test").append(formskills);
+	// }
+	switch (count_obj) {
+		case 0:
+			var Firstpic = Firstpage.replace("%data%", bio_obj.skills[count_obj]);
+			$("#test").append(Firstpic);
+			break;
+		case 1:
+			var Secondpic = Secondpage.replace("%data%", bio_obj.skills[count_obj]);
+			$("#test").append(Secondpic);
+			break;
+		case 2:
+			var Thirdpic = Firstpage.replace("%data%", bio_obj.skills[count_obj]);
+			var Fourthpic = Secondpage.replace("%data%", bio_obj.skills[++count_obj]);
+			$('#First').replaceWith(Thirdpic);
+			$('#Second').replaceWith(Fourthpic);
+		// 	for (var skill=0,x=count_obj;skill<x;skill++) {
+		// 	var thirdpic = Firstpage.replace("%data%", bio_obj.skills[skill]);
+		// 	console.log(skill);
+		// 	$("#test").append(thirdpic);
+		// };
+			break;
 	}
 };
 
